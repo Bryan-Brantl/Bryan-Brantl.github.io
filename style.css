@@ -15,6 +15,13 @@
   --card-bg: #333;
 }
 
+/* Isso limita o tamanho da imagem apenas dentro da seção Sobre */
+#sobre img {
+  max-width: 400px;  /* Largura máxima */
+  width: 100%;       /* Para ficar responsivo no celular */
+  margin-top: 40px;  /* Um espacinho entre os cards e a imagem */
+}
+
 /* Reset Básico */
 * {
   margin: 0;
