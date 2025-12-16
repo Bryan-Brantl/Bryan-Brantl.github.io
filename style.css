@@ -1,25 +1,20 @@
-/* Variáveis de Cores (Fácil de mudar depois) */
+/* Variáveis de Cores (Azul PET) */
 :root {
-  --primary-color: #007bff;
-  --bg-color: #f4f4f4;
+  --primary-color: #004080; /* Azul Escuro Institucional */
+  --secondary-color: #0056b3; /* Azul mais claro para hover */
+  --bg-color: #f8f9fa;
   --text-color: #333;
-  --header-bg: #222;
+  --header-bg: #003366; /* Cabeçalho Azul Escuro */
   --card-bg: white;
 }
 
-/* Estilos para o Modo Escuro */
+/* Dark Mode */
 .dark-mode {
   --bg-color: #121212;
   --text-color: #e0e0e0;
   --header-bg: #1f1f1f;
-  --card-bg: #333;
-}
-
-/* Isso limita o tamanho da imagem apenas dentro da seção Sobre */
-#sobre img {
-  max-width: 400px;  /* Largura máxima */
-  width: 100%;       /* Para ficar responsivo no celular */
-  margin-top: 40px;  /* Um espacinho entre os cards e a imagem */
+  --card-bg: #2c2c2c;
+  --primary-color: #4da3ff; /* Azul mais brilhante para o escuro */
 }
 
 /* Reset Básico */
@@ -29,45 +24,54 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth; /* Rolagem suave ao clicar nos links */
-}
-
 body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
-  transition: background 0.3s, color 0.3s; /* Transição suave do tema */
+  transition: background 0.3s, color 0.3s;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* Header e Navegação */
+/* Header */
 header {
   background: var(--header-bg);
   color: white;
   padding: 1rem 2rem;
-  display: flex; /* Flexbox para alinhar */
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .logo {
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
-nav a {
+/* Botões do Menu (Abas) */
+.nav-btn {
+  background: transparent;
+  border: none;
+  color: #ccc;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 15px;
+  padding-bottom: 5px;
+  transition: all 0.3s;
+}
+
+.nav-btn:hover {
   color: white;
-  margin-left: 20px;
-  text-decoration: none;
-  font-weight: 400;
-  transition: color 0.3s;
 }
 
-nav a:hover {
-  color: var(--primary-color); /* Cor de destaque ao passar o mouse */
+/* Estilo do botão ativo (aba selecionada) */
+.nav-btn.active {
+  color: white;
+  border-bottom: 2px solid white;
+  font-weight: 600;
 }
 
 #theme-toggle {
@@ -75,64 +79,82 @@ nav a:hover {
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
-  margin-left: 20px;
 }
 
-/* Seções */
-section {
-  padding: 60px 20px;
+/* Lógica das Abas (O Segredo!) */
+.tab-content {
+  display: none; /* Esconde tudo por padrão */
+  padding: 40px 20px;
   text-align: center;
-  min-height: 80vh; /* Ocupa pelo menos 80% da altura da tela */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  animation: fadeIn 0.5s;
 }
 
-/* Hero Section (Destaque inicial) */
+.active-tab {
+  display: block; /* Mostra só quem tem essa classe */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero Section (Dentro do Sobre) */
 .hero {
-  background: linear-gradient(135deg, var(--header-bg), #444);
+  background: linear-gradient(135deg, var(--header-bg), var(--secondary-color));
   color: white;
+  padding: 60px 20px;
+  border-radius: 0 0 20px 20px;
+  margin-bottom: 40px;
 }
 
-.cta-button {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: var(--primary-color);
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: 600;
-  transition: transform 0.2s;
+.content-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.cta-button:hover {
-  transform: scale(1.05); /* Aumenta um pouco ao passar o mouse */
+.description-text {
+  max-width: 800px;
+  margin: 20px auto 40px auto;
+  line-height: 1.6;
 }
 
-/* Cards (Sobre) */
+/* Cards */
 .card-container {
   display: flex;
-  gap: 20px;
-  margin-top: 30px;
-  flex-wrap: wrap;
+  gap: 30px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .card {
   background: var(--card-bg);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  width: 150px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  width: 300px;
+  text-align: left;
+  border-top: 4px solid var(--primary-color); /* Detalhe colorido no topo */
+}
+
+.card h4 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.card p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-color);
+  opacity: 0.9;
 }
 
 /* Footer */
 footer {
+  margin-top: auto;
   text-align: center;
   padding: 20px;
   background: var(--header-bg);
-  color: #777;
+  color: #ccc;
   font-size: 0.9rem;
 }
