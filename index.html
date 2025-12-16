@@ -1,57 +1,82 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <!------------------------------- [ CTRL + ; ] PARA COMENTAR ----------------->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meu Portfólio</title>
+  <title>PETee UTFPR - Engenharia Eletrônica</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   
   <header>
-    <div class="logo">MeuProjeto</div>
+    <div class="logo">PETee UTFPR</div>
     <nav>
-      <!-----------------------   MENUS   ------------------>
-      <a href="#home">Home</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#contato">Contato</a>
-      <button id="theme-toggle">🌙</button> </nav>
+      <button class="nav-btn active" onclick="openTab('sobre')">Sobre Nós</button>
+      <button class="nav-btn" onclick="openTab('ensino')">Ensino</button>
+      <button class="nav-btn" onclick="openTab('pesquisa')">Pesquisa</button>
+      <button class="nav-btn" onclick="openTab('extensao')">Extensão</button>
+      <button class="nav-btn" onclick="openTab('outras')">Outras Atividades</button>
+      
+      <button id="theme-toggle" style="margin-left: 15px;">🌙</button> 
+    </nav>
   </header>
 
   <main>
-    <!-----------------------   HOME   ----------------------->
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <h2>Bem-vindo ao Futuro</h2>
-        <p>Este é um exemplo de site moderno hospedado no GitHub Pages.</p>
-        <a href="#sobre" class="cta-button">Saiba Mais</a>
+    
+    <section id="sobre" class="tab-content active-tab">
+      <div class="hero">
+        <h2>PET Engenharia Eletrônica</h2>
+        <p>Programa de Educação Tutorial da UTFPR</p>
+      </div>
+
+      <div class="content-wrapper">
+        <h3>O QUE É PET?</h3>
+        <p class="description-text">
+          O Programa de Educação Tutorial (PET) é desenvolvido por grupos de estudantes, com tutoria de um docente, organizados a partir de formações em nível de graduação nas Instituições de Ensino Superior do país orientados pelo princípio da indissociabilidade entre ensino, pesquisa e extensão e da educação tutorial.
+        </p>
+
+        <div class="card-container">
+          <div class="card">
+            <h4>📖 Ensino</h4>
+            <p>As atividades extra-curriculares que compõem o Programa têm como objetivo garantir a formação global do aluno, procurando atender plenamente as necessidades do próprio curso de graduação e/ou ampliar e aprofundar os objetivos e os conteúdos programáticos que integram sua grade curricular.</p>
+          </div>
+          <div class="card">
+            <h4>🔍 Pesquisa</h4>
+            <p>As atividades de pesquisa desenvolvidas pelos petianos têm como objetivo garantir a formação não só teórica, mas também prática do aluno, de modo a oferecer a oportunidade de aprender novos conteúdos e já se familiarizar com o ambiente de pesquisa científica.</p>
+          </div>
+          <div class="card">
+            <h4>👥 Extensão</h4>
+            <p>As atividades de extensão desenvolvidas objetivam que o petiano vivencie o processo de ensino-aprendizagem além dos limites da sala de aula, com a possibilidade de articular a universidade às diversas organizações da sociedade, em uma enriquecedora troca de conhecimentos e experiências.</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-----------------------   SOBRE   ----------------------->
-    <section id="sobre">
-      <h2>Sobre o Projeto</h2>
-      <p>Aqui você pode descrever suas habilidades, o objetivo do site ou seu portfólio.</p>
-      <div class="card-container">
-        <div class="card">🚀 Performance</div>
-        <div class="card">🎨 Design</div>
-        <div class="card">📱 Responsivo</div>
-      </div>
-      <img src="img/pensando.svg" alt="Pessoa programando">
+    <section id="ensino" class="tab-content">
+      <h2>Projetos de Ensino</h2>
+      <p>Conteúdo em breve...</p>
     </section>
 
-    <!-----------------------   CONTATO   ----------------------->
-    <section id="contato">
-      <h2>Fale Comigo</h2>
-      <p>Entre em contato para parcerias ou dúvidas.</p>
-      <a href="mailto:exemplo@email.com" class="email-link">exemplo@email.com</a>
+    <section id="pesquisa" class="tab-content">
+      <h2>Projetos de Pesquisa</h2>
+      <p>Conteúdo em breve...</p>
     </section>
+
+    <section id="extensao" class="tab-content">
+      <h2>Projetos de Extensão</h2>
+      <p>Conteúdo em breve...</p>
+    </section>
+
+    <section id="outras" class="tab-content">
+      <h2>Outras Atividades</h2>
+      <p>Conteúdo em breve...</p>
+    </section>
+
   </main>
 
   <footer>
-    <p>&copy; 2024 Desenvolvido por Você</p>
+    <p>&copy; 2024 PETee UTFPR - Engenharia Eletrônica</p>
   </footer>
 
   <script src="script.js"></script>
