@@ -133,7 +133,7 @@ header {
    ========================================= */
 .card-container {
   display: flex;
-  gap: 20px;               /* Espaço entre os cards */
+  gap: 30px;               /* Espaço entre os cards */
   flex-direction: row;     /* Um ao lado do outro */
   flex-wrap: wrap;         /* Permite quebrar linha se necessário */
   justify-content: center;
@@ -144,10 +144,10 @@ header {
 
 .card {
   background: var(--card-bg);
-  padding: 50px;
+  padding: 30px;
   border-radius: 50% 20% /10% 40%;
   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  border-top: 4px solid var(--primary-color);
+  border-top: 8px solid var(--primary-color);
   text-align: left;
   
   /* --- Lógica Flexbox Inteligente --- */
