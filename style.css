@@ -1,4 +1,6 @@
-/* Variáveis de Cores (Azul PET) */
+/* =========================================
+   VARIAVEIS E TEMA (Azul PET)
+   ========================================= */
 :root {
   --primary-color: #004080; /* Azul Escuro Institucional */
   --secondary-color: #0056b3; /* Azul mais claro para hover */
@@ -17,7 +19,9 @@
   --primary-color: #4da3ff; /* Azul mais brilhante para o escuro */
 }
 
-/* Reset Básico */
+/* =========================================
+   RESET E BASE
+   ========================================= */
 * {
   margin: 0;
   padding: 0;
@@ -34,7 +38,9 @@ body {
   min-height: 100vh;
 }
 
-/* Header */
+/* =========================================
+   HEADER E NAVEGAÇÃO
+   ========================================= */
 header {
   background: var(--header-bg);
   color: white;
@@ -81,7 +87,9 @@ header {
   cursor: pointer;
 }
 
-/* Lógica das Abas (O Segredo!) */
+/* =========================================
+   LÓGICA DAS ABAS
+   ========================================= */
 .tab-content {
   display: none; /* Esconde tudo por padrão */
   padding: 40px 20px;
@@ -98,7 +106,9 @@ header {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Hero Section (Dentro do Sobre) */
+/* =========================================
+   HERO SECTION (Títulos)
+   ========================================= */
 .hero {
   background: linear-gradient(135deg, var(--header-bg), var(--secondary-color));
   color: white;
@@ -118,12 +128,18 @@ header {
   line-height: 1.6;
 }
 
-/* Cards */
+/* =========================================
+   CARDS (COM DISTRIBUIÇÃO INTELIGENTE)
+   ========================================= */
 .card-container {
   display: flex;
-  gap: 30px;
+  gap: 20px;               /* Espaço entre os cards */
+  flex-direction: row;     /* Um ao lado do outro */
+  flex-wrap: wrap;         /* Permite quebrar linha se necessário */
   justify-content: center;
-  flex-wrap: wrap;
+  align-items: stretch;    /* Altura igual para todos */
+  max-width: 1200px;       
+  margin: 30px auto;       
 }
 
 .card {
@@ -131,25 +147,30 @@ header {
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  width: 300px;
+  border-top: 4px solid var(--primary-color);
   text-align: left;
-  border-top: 4px solid var(--primary-color); /* Detalhe colorido no topo */
+  
+  /* --- Lógica Flexbox Inteligente --- */
+  flex-grow: 1;      /* Ocupa o espaço vazio */
+  flex-basis: 300px; /* Tamanho ideal inicial */
 }
 
 .card h4 {
   color: var(--primary-color);
   margin-bottom: 15px;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .card p {
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: 0.95rem;
+  line-height: 1.6;
   color: var(--text-color);
   opacity: 0.9;
 }
 
-/* Footer */
+/* =========================================
+   FOOTER
+   ========================================= */
 footer {
   margin-top: auto;
   text-align: center;
