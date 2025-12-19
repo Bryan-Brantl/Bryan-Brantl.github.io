@@ -128,13 +128,14 @@ header {
 
 .content-wrapper {
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 60px auto;
+  padding: 0 20px;
 }
 
-.description-text {
-  max-width: 800px;
-  margin: 20px auto 40px auto;
-  line-height: 1.6;
+.content-wrapper {
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 0 20px;
 }
 
 /* =========================================
