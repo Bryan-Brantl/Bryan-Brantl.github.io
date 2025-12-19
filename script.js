@@ -8,17 +8,26 @@ const body = document.body;
 
 themeToggle.addEventListener('click', () => {
   body.classList.toggle('dark-mode');
-  if (body.classList.contains('dark-mode')) {
-    themeToggle.textContent = '☀️';
-  } else {
-    themeToggle.textContent = '🌙';
-  }
+  themeToggle.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
 });
 
 // ======================================================
-// 2. Função que Troca as Abas (Chamada pelo clique)
+// 2. Configuração dos Botões das Abas (Event Listeners)
 // ======================================================
-function openTab(tabName) {
+// Seleciona todos os botões que têm o atributo 'data-tab'
+const navButtons = document.querySelectorAll('.nav-btn[data-tab]');
+
+navButtons.forEach(button => {
+  button.addEventListener('click', (e) => {
+    const tabName = button.getAttribute('data-tab');
+    openTab(tabName, button);
+  });
+});
+
+// ======================================================
+// 3. Função que Troca as Abas
+// ======================================================
+function openTab(tabName, clickedButton = null) {
   // A. Esconder todo o conteúdo das abas
   const contents = document.getElementsByClassName('tab-content');
   for (let content of contents) {
@@ -26,42 +35,35 @@ function openTab(tabName) {
   }
 
   // B. Remover o destaque de todos os botões
-  const buttons = document.getElementsByClassName('nav-btn');
-  for (let btn of buttons) {
-    btn.classList.remove('active');
+  navButtons.forEach(btn => btn.classList.remove('active'));
+
+  // C. Mostrar apenas o conteúdo desejado (proteção contra erro se id não existir)
+  const targetContent = document.getElementById(tabName);
+  if (targetContent) {
+    targetContent.classList.add('active-tab');
   }
 
-  // C. Mostrar apenas o conteúdo clicado
-  document.getElementById(tabName).classList.add('active-tab');
+  // D. Destacar o botão correto
+  if (clickedButton) {
+    // Se foi um clique manual
+    clickedButton.classList.add('active');
+  } else {
+    // Se veio pelo carregamento da página, buscamos o botão pelo atributo
+    const autoButton = document.querySelector(`.nav-btn[data-tab="${tabName}"]`);
+    if (autoButton) autoButton.classList.add('active');
+  }
   
-  // D. Atualizar a URL (Adiciona o #nomeDaAba)
+  // E. Atualizar a URL
   window.location.hash = tabName;
-
-  // E. Destacar o botão clicado
-  // Se o clique veio do usuário (mouse), usa o event.currentTarget
-  // Se veio do carregamento automático, a gente ignora essa linha (o script de load já resolve)
-  if (event && event.currentTarget) {
-      event.currentTarget.classList.add('active');
-  }
 }
 
 // ======================================================
-// 3. Lógica de Carregamento (Roda SOZINHO ao abrir o site)
+// 4. Carregamento Inicial (Roda ao abrir o site)
 // ======================================================
 window.addEventListener('load', () => {
-  // Pega o hash da URL (remove o # do começo)
   const hash = window.location.hash.substring(1); 
-  
-  // Se tiver um hash (ex: #pesquisa)
   if (hash) {
-    const button = document.querySelector(`button[onclick="openTab('${hash}')"]`);
-    
-    // Se achou o botão, clica nele virtualmente
-    if (button) {
-      // Adicionamos a classe active manualmente aqui para garantir visual
-      button.classList.add('active'); 
-      // Chamamos a função de abrir a aba
-      openTab(hash);
-    }
+    // Chama a função sem passar um botão clicado (o script acha sozinho)
+    openTab(hash);
   }
 });
