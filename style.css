@@ -112,14 +112,23 @@ header {
 .hero {
   height: 70vh;
   width: 100%;
-  background-color: #060430;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   color: white;
+  text-align: center;
+  
+  /* Imagem SVG com máscara central para limpeza de caminhos */
+  background-color: #060430; /* Cor de fundo institucional */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1920' height='800' viewBox='0 0 1920 800'%3e%3cdefs%3e%3cmask id='centerMask'%3e%3crect width='100%25' height='100%25' fill='white'/%3e%3ccircle cx='50%25' cy='50%25' r='40%25' fill='black' filter='blur(50px)'/%3e%3c/mask%3e%3c/defs%3e%3cg fill='none' stroke='rgba(74%2c 69%2c 161%2c 0.6)' stroke-width='5' mask='url(%23centerMask)'%3e%3cpath d='M1596.5 294.5L1565.5 325.5L1565.5 356.5L1379.5 542.5L1379.5 790.5'/%3e%3cpath d='M294.5 418.5L666.5 790.5L883.5 790.5'/%3e%3cpath d='M604.5 387.5L604.5 480.5L511.5 573.5L480.5 573.5L108.5 201.5'/%3e%3cpath d='M1193.5 666.5L1317.5 666.5L1348.5 635.5L1348.5 232.5L1317.5 201.5'/%3e%3cpath d='M914.5 15.5L604.5 15.5L325.5 294.5'/%3e%3cpath d='M77.5 387.5L263.5 387.5'/%3e%3cpath d='M976.5 108.5L697.5 108.5L387.5 418.5'/%3e%3cpath d='M1658.5 232.5L1627.5 263.5L1627.5 294.5L1906.5 573.5L1906.5 604.5L1782.5 728.5L1782.5 790.5'/%3e%3cpath d='M1193.5 418.5L1193.5 46.5L1162.5 15.5L976.5 15.5'/%3e%3cpath d='M170.5 201.5L170.5 232.5L356.5 418.5'/%3e%3cpath d='M1596.5 232.5L1410.5 46.5L1410.5 15.5'/%3e%3cpath d='M1441.5 108.5L1379.5 46.5L1224.5 46.5L1193.5 15.5'/%3e%3cpath d='M852.5 666.5L635.5 449.5L635.5 201.5L697.5 139.5L759.5 139.5'/%3e%3cpath d='M263.5 480.5L325.5 542.5L325.5 790.5'/%3e%3cpath d='M1317.5 294.5L1224.5 387.5L1224.5 604.5L1038.5 790.5L945.5 790.5'/%3e%3cpath d='M1100.5 139.5L1007.5 46.5L883.5 46.5L852.5 77.5L573.5 77.5L511.5 139.5'/%3e%3cpath d='M728.5 511.5L914.5 697.5L914.5 790.5'/%3e%3c/g%3e%3c/svg%3e");
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
+.hero-content h1 {
+  font-size: 3.5rem;
 
 .content-wrapper {
   max-width: 1000px;
