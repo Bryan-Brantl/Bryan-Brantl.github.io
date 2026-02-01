@@ -56,6 +56,12 @@ header {
   font-size: 1.4rem;
 }
 
+nav {
+  display: flex;
+  align-items: center; 
+  gap: 5px; 
+}
+
 /* Botões do Menu (Abas) */
 .nav-btn {
   background: transparent;
@@ -67,6 +73,9 @@ header {
   margin-left: 15px;
   padding-bottom: 5px;
   transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Distância entre o ícone e a palavra */
 }
 
 .nav-btn:hover {
