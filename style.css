@@ -90,6 +90,16 @@ header {
 /* =========================================
    LÓGICA DAS ABAS
    ========================================= */
+
+.logo {
+  font-weight: 600;
+  font-size: 1.4rem;
+  /* Novas propriedades */
+  text-decoration: none;
+  color: white; /* Ou use var(--text-color) se quiser que mude no tema */
+  cursor: pointer;
+}
+
 .tab-content {
   display: none; /* Esconde tudo por padrão */
   padding: 0;
