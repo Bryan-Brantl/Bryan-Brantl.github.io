@@ -89,6 +89,12 @@ nav {
   font-weight: 600;
 }
 
+nav, .nav-menu {
+  display: flex;       
+  align-items: center; /* Centraliza verticalmente (para o logo não ficar torto em relação aos botões) */
+  gap: 15px;           /* Dá um espaço saudável entre os botões */
+}
+
 #theme-toggle {
   background: none;
   border: none;
