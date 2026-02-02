@@ -143,7 +143,7 @@ nav, .nav-menu {
   color: white; /* Garante que o título do PET seja legível */
   text-align: center;
 
-  /* O SEGREDO: O radial-gradient cria uma mancha escura no centro (a área segura) */
+  /* O radial-gradient cria uma mancha escura no centro (a área segura) */
   /* O url() traz o seu circuito que fica por baixo dessa mancha */
   background-image: 
     radial-gradient(circle, rgba(6, 4, 48, 1) 20%, rgba(6, 4, 48, 0) 80%), 
