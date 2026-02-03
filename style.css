@@ -188,7 +188,7 @@ nav, .nav-menu {
   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
   border-top: 8px solid var(--primary-color);
   text-align: left;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, border-top-color 0.3s;
   /* --- Lógica Flexbox Inteligente --- */
   flex-grow: 1;      /* Ocupa o espaço vazio */
   flex-basis: 300px; /* Tamanho ideal inicial */
@@ -210,6 +210,7 @@ nav, .nav-menu {
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  border-top-color: var(--secondary-color);
 }
 /* =========================================
    FOOTER
