@@ -2,12 +2,13 @@
    VARIAVEIS E TEMA (Azul PET)
    ========================================= */
 :root {
-  --primary-color: #004080; /* Azul Escuro Institucional */
-  --secondary-color: #0056b3; /* Azul mais claro para hover */
+  --primary-color: #001A52 /* #004080  Azul Escuro Institucional */
+  --secondary-color: #004080   /* #0056b3 Azul mais claro para hover */
   --bg-color: #f8f9fa;
   --text-color: #333;
   --header-bg: #003366; /* Cabeçalho Azul Escuro */
   --card-bg: white;
+   --destaque-color:#FFB30D; /* AMARELO UTFPR */
 }
 
 /* Dark Mode */
