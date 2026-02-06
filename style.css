@@ -3,7 +3,7 @@
    ========================================= */
 :root {
   --primary-color: #001A52 /* #004080  Azul Escuro Institucional */
-  --secondary-color: #004080   /* #0056b3 Azul mais claro para hover */
+  --secondary-color: #004080;   /* #0056b3 Azul mais claro para hover */
   --bg-color: #f8f9fa;
   --text-color: #333;
   --header-bg: #003366; /* Cabeçalho Azul Escuro */
