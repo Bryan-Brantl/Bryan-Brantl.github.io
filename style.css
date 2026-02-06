@@ -321,3 +321,65 @@ a.project-card {
     margin-bottom: 10px;
   }
 }
+
+/* =========================================
+   MENU HAMBÚRGUER (MOBILE)
+   ========================================= */
+
+/* 1. Esconder o botão hambúrguer no Desktop */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* 2. Regras apenas para telas pequenas (Celular/Tablet) */
+@media (max-width: 768px) {
+  
+  /* Mostra o botão hambúrguer */
+  .hamburger {
+    display: block;
+  }
+
+  /* Esconde e Estiliza o Menu */
+  .nav-menu {
+    position: absolute;
+    top: 100%;       /* Cola logo abaixo do Header */
+    left: 0;
+    width: 100%;
+    background-color: var(--header-bg); /* Fundo igual ao header */
+    
+    /* Flexbox em Coluna */
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    gap: 20px;
+    
+    /* Efeito de transição (Slide/Fade) */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.3s ease-in-out;
+    z-index: 1000; /* Garante que fique acima de tudo */
+    box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+  }
+
+  /* Classe que o JS vai adicionar quando clicar */
+  .nav-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Ajuste fino nos botões para ficarem grandes no celular */
+  .nav-btn {
+    width: 100%;
+    justify-content: center; /* Centraliza texto e ícone */
+    margin: 0;
+    font-size: 1.2rem;
+    padding: 10px;
+  }
+}
