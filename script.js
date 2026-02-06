@@ -67,3 +67,33 @@ window.addEventListener('load', () => {
     openTab(hash);
   }
 });
+
+// ======================================================
+// 5. Menu Hambúrguer (Mobile)
+// ======================================================
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+
+// Abre/Fecha ao clicar no ícone
+hamburger.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+  
+  // Opcional: Troca o ícone de "Barras" para "X"
+  const icon = hamburger.querySelector("i");
+  if (navMenu.classList.contains("active")) {
+    icon.classList.remove("fa-bars");
+    icon.classList.add("fa-times");
+  } else {
+    icon.classList.remove("fa-times");
+    icon.classList.add("fa-bars");
+  }
+});
+
+// Fecha o menu automaticamente quando clicar em um botão (link)
+document.querySelectorAll(".nav-btn").forEach(n => n.addEventListener("click", () => {
+  navMenu.classList.remove("active");
+  // Reseta o ícone
+  const icon = hamburger.querySelector("i");
+  icon.classList.remove("fa-times");
+  icon.classList.add("fa-bars");
+}));
