@@ -6,14 +6,24 @@
   <title>Detalhes do Projeto - PETee</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="img/icone_petee2.png">
 </head>
 <body>
   
   <header>
-    <div class="logo">PETee UTFPR</div>
-    <nav>
-      <a href="index.html" class="nav-btn" style="text-decoration: none; color: white;">Voltar para Home</a>
-    </nav>
+      <a href="index.html" class="logo">PETEE UTFPR</a>
+  
+      <button class="hamburger" aria-label="Abrir menu">
+          <i class="fas fa-bars"></i>
+      </button>
+  
+      <nav class="nav-menu">  
+          <a href="index.html" class="nav-btn">
+              <i class="fas fa-arrow-left"></i> Voltar para Home
+          </a>
+          <button id="theme-toggle">🌙</button>
+      </nav>
   </header>
 
   <main>
@@ -23,7 +33,7 @@
       
       <img src="img/ensino_01.png" alt="Arduino" style="width: 100%; border-radius: 12px; margin-bottom: 30px;">
 
-      <div class="text-content" style="line-height: 1.8; color: #444;">
+      <div class="text-content">
         <p><strong>Data de Realização:</strong> 20 de Outubro de 2024</p>
         <p><strong>Local:</strong> Laboratório de Eletrônica - UTFPR</p>
         <br>
