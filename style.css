@@ -324,6 +324,22 @@ a.project-card {
   }
 }
 
+.project-details {
+  max-width: 800px; 
+  margin: 40px auto; 
+  padding: 20px;
+}
+
+.text-content {
+  line-height: 1.8; 
+  color: var(--text-color); /* Variável que muda no dark-mode */
+}
+
+.text-content h1 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
 /* =========================================
    MENU HAMBÚRGUER (MOBILE)
    ========================================= */
