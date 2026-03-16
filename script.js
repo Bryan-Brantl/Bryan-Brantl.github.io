@@ -3,14 +3,12 @@ console.log("Sistema PETee carregado.");
 // ======================================================
 // 1. Lógica do Modo Escuro
 // ======================================================
-const themeToggle = document.getElementById('theme-toggle');
+const themeCheckbox = document.getElementById('theme-checkbox');
 const body = document.body;
 
-themeToggle.addEventListener('click', () => {
+themeCheckbox.addEventListener('change', () => {
   body.classList.toggle('dark-mode');
-  themeToggle.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
 });
-
 // ======================================================
 // 2. Configuração dos Botões das Abas (Event Listeners)
 // ======================================================
