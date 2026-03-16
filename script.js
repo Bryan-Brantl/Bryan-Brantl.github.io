@@ -1,14 +1,39 @@
 console.log("Sistema PETee carregado.");
 
 // ======================================================
-// 1. Lógica do Modo Escuro
+// 1. Lógica do Modo Escuro (com localStorage)
 // ======================================================
 const themeCheckbox = document.getElementById('theme-checkbox');
 const body = document.body;
 
-themeCheckbox.addEventListener('change', () => {
-  body.classList.toggle('dark-mode');
-});
+// PASSO A: Assim que a página carrega, verifica se existe um tema salvo
+const temaSalvo = localStorage.getItem('petee-tema');
+
+// PASSO B: Se o tema salvo for 'dark', aplica a classe no body e deixa o botão marcado
+if (temaSalvo === 'dark') {
+  body.classList.add('dark-mode');
+  // Garante que o slider visualmente fique na posição correta
+  if (themeCheckbox) {
+    themeCheckbox.checked = true;
+  }
+}
+
+// PASSO C: O que acontece quando o usuário clica no botão
+if (themeCheckbox) {
+  themeCheckbox.addEventListener('change', () => {
+    // Liga ou desliga a classe dark-mode
+    body.classList.toggle('dark-mode');
+    
+    // Verifica se a classe dark-mode está ativa agora
+    if (body.classList.contains('dark-mode')) {
+      // Salva na memória do navegador
+      localStorage.setItem('petee-tema', 'dark');
+    } else {
+      // Salva na memória do navegador
+      localStorage.setItem('petee-tema', 'light');
+    }
+  });
+}
 // ======================================================
 // 2. Configuração dos Botões das Abas (Event Listeners)
 // ======================================================
