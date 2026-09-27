@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monta Horário — Elétrica/Eletrônica UTFPR Curitiba</title>
+<meta name="description" content="Monte sua grade horária de Engenharia Elétrica ou Eletrônica da UTFPR Curitiba. Veja os conflitos de horário na hora e organize sua matrícula em minutos.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Monta Horário — Elétrica/Eletrônica UTFPR Curitiba">
+<meta property="og:description" content="Monte sua grade horária de Engenharia Elétrica ou Eletrônica da UTFPR Curitiba e veja os conflitos de horário na hora.">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Monta Horário — Elétrica/Eletrônica UTFPR Curitiba">
+<meta name="twitter:description" content="Monte sua grade horária de Engenharia Elétrica ou Eletrônica da UTFPR Curitiba e veja os conflitos de horário na hora.">
+<link rel="stylesheet" href="styles.css">
+<script>
+(function(){
+  var saved = localStorage.getItem('utfpr_theme') || 'system';
+  var isDark = saved === 'dark' || (saved === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+  var compactPref = localStorage.getItem('utfpr_compact');
+  if (compactPref === null || compactPref === '1') {
+    document.documentElement.setAttribute('data-compact', 'true');
+  }
+})();
+</script>
+</head>
+<body>
+
+<header>
+  <div class="header-title-row">
+    <h1>Monta<span>Horário</span> <span id="brandUtfpr">Elétrica/Eletrônica 2026/2</span></h1>
+    <div class="header-extras">
+      <button type="button" class="compact-toggle icon-btn" id="compactToggle" title="Modo compacto para melhor visualização da lista" aria-label="Modo compacto" aria-pressed="true">
+        <svg class="ct-icon ct-icon-compact" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+          <line x1="2" y1="4" x2="14" y2="4"></line>
+          <line x1="2" y1="8" x2="14" y2="8"></line>
+          <line x1="2" y1="12" x2="14" y2="12"></line>
+        </svg>
+        <svg class="ct-icon ct-icon-expanded" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+          <rect x="2" y="2.5" width="12" height="4" rx="1"></rect>
+          <rect x="2" y="9.5" width="12" height="4" rx="1"></rect>
+        </svg>
+      </button>
+      <button type="button" class="theme-toggle" id="themeToggle" title="Alternar tema" aria-label="Alternar tema" aria-pressed="false">
+        <span class="tt-track">
+          <span class="tt-thumb" id="ttThumb"></span>
+        </span>
+      </button>
+      <a class="icon-btn github-link" href="https://github.com/SEU-USUARIO/SEU-REPO" target="_blank" rel="noopener noreferrer" title="Ver código no GitHub" aria-label="Ver código no GitHub">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+      </a>
+    </div>
+  </div>
+</header>
+<div class="action-bar" id="actionBar">
+  <div class="toolbar">
+    <button id="btnUndo" class="icon-btn" title="Desfazer (Ctrl+Z)" aria-label="Desfazer" disabled>
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    </button>
+    <button id="btnRedo" class="icon-btn" title="Refazer (Ctrl+Y)" aria-label="Refazer" disabled>
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </button>
+    <button id="btnCopy" title="Copiar seleção (Ctrl+C)"><span class="btn-label-full">Copiar Turmas</span><span class="btn-label-short">Copiar</span></button>
+    <button id="btnPaste" title="Colar seleção (Ctrl+V)"><span class="btn-label-full">Colar Turmas</span><span class="btn-label-short">Colar</span></button>
+    <div class="enrolled-dropdown-wrap" id="enrolledDropdownWrap">
+      <button type="button" class="enrolled-toggle icon-btn" id="enrolledToggle" title="Ver turmas selecionadas" aria-label="Ver turmas selecionadas" aria-haspopup="true" aria-expanded="false">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 5h10"></path>
+          <path d="M3 8h10"></path>
+          <path d="M3 11h6"></path>
+          <path d="M12 10.5l1.5 1.5 2-2.5"></path>
+        </svg>
+      </button>
+      <div class="enrolled-dropdown" id="enrolledDropdown" role="menu" aria-label="Turmas selecionadas" hidden></div>
+    </div>
+    <button id="btnClear" class="danger icon-btn" title="Limpar tudo (Delete)" aria-label="Limpar tudo">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path></svg>
+    </button>
+  </div>
+  <div class="mini-grid" id="miniGrid" aria-hidden="true"></div>
+</div>
+
+<main>
+  <div class="panel">
+    <div class="course-select-wrap">
+      <label for="courseSelect">Curso</label>
+      <select id="courseSelect" aria-label="Selecionar curso"></select>
+    </div>
+    <label class="visually-hidden" for="searchBox">Buscar disciplina, código, professor ou sigla</label>
+    <div class="search-wrap">
+      <svg class="search-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input class="search" id="searchBox" placeholder="Buscar disciplina, código, professor ou sigla..." title="Buscar (atalho: /)">
+      <button type="button" class="search-clear" id="searchClear" title="Limpar busca" aria-label="Limpar busca" hidden>
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"></line><line x1="19" y1="5" x2="5" y2="19"></line></svg>
+      </button>
+    </div>    <div class="filter-row" role="group" aria-label="Filtrar disciplinas">
+      <button id="filterAll" class="active" aria-pressed="true">Todas</button>
+      <button id="filterSelected" aria-pressed="false">Selecionadas</button>
+      <button id="filterConflict" aria-pressed="false">Com conflito</button>
+      <button type="button" id="filterPin" class="filter-pin-btn" title="Turmas fixadas" aria-label="Mostrar turmas fixadas" aria-pressed="false">
+        <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146zm.122 2.112v-.002.002zm0-.002v.002a.5.5 0 0 1-.122.51L6.293 6.878a.5.5 0 0 1-.511.12H5.78l-.014-.004a4.507 4.507 0 0 0-.288-.076 4.922 4.922 0 0 0-.765-.116c-.422-.028-.836.008-1.175.15l5.51 5.509c.141-.34.177-.753.149-1.175a4.924 4.924 0 0 0-.192-1.054l-.004-.013v-.001a.5.5 0 0 1 .12-.512l3.536-3.535a.5.5 0 0 1 .532-.115l.096.022c.087.017.208.034.344.034.114 0 .23-.011.343-.04L9.927 2.028c-.029.113-.04.23-.04.343a1.779 1.779 0 0 0 .062.46z"></path></svg>
+      </button>
+    </div>
+    <div class="subject-list" id="subjectList" aria-label="Lista de disciplinas"></div>
+  </div>
+
+  <div class="content-col">
+    <div class="stats-row" id="statsRow">
+      <div class="stats" id="statsBar" role="status" aria-live="polite"></div>
+      <div class="template-bar" id="templateBar" role="group" aria-label="Templates de grade">
+        <button type="button" class="template-btn" data-template="1" title="Template 1" aria-label="Template 1">1</button>
+        <button type="button" class="template-btn" data-template="2" title="Template 2" aria-label="Template 2">2</button>
+        <button type="button" class="template-btn" data-template="3" title="Template 3" aria-label="Template 3">3</button>
+        <button type="button" class="template-btn" data-template="4" title="Template 4" aria-label="Template 4">4</button>
+        <button type="button" class="template-btn" data-template="5" title="Template 5" aria-label="Template 5">5</button>
+        <button type="button" class="template-btn" data-template="6" title="Template 6" aria-label="Template 6">6</button>
+      </div>
+    </div>
+    <div class="conflict-banner" id="conflictBanner" role="alert" aria-live="assertive"></div>
+    <div class="grid-wrap">
+      <table class="grid" id="gridTable"></table>
+    </div>
+    <div class="legend" id="legend" aria-label="Legenda de cores por disciplina"></div>
+    <div class="footer-note">Dados extraídos do relatório "Turmas Abertas, 2º Semestre de 2026" (UTFPR, gerado 08/08/2026 13:00 GMT-3). Salas em <span class="dot-red">vermelho</span> indicam turmas em outra sede (Ecoville <span class="dot-red">*</span>  / Neoville <span class="dot-red">**</span> ). Sujeito a alteração, confira sempre no sistema oficial. Uso pessoal, sem vínculo com a UTFPR.</div>
+  </div>
+</main>
+
+<section class="seo-intro">
+  <h2>O que é o Monta Horário</h2>
+  <p>Ferramenta pessoal para montar a grade horária de Engenharia Elétrica ou Eletrônica da UTFPR Curitiba a partir das turmas abertas no semestre. Em vez de cruzar manualmente os horários de cada disciplina, você seleciona as turmas que quer cursar e a grade é montada na tela, com os conflitos de horário destacados automaticamente.</p>
+
+  <h3>Grade horária sem conflitos de horário</h3>
+  <p>Ao adicionar uma turma, o sistema compara os horários com as disciplinas já selecionadas e avisa na hora se há sobreposição. Isso evita o erro comum de só perceber o conflito de horário depois de fechar a matrícula, e ajuda a decidir mais rápido entre turmas do mesmo componente curricular quando há mais de uma opção de horário ou professor.</p>
+
+  <h3>6 grades salvas ao mesmo tempo</h3>
+  <p>É possível montar até 6 combinações diferentes de grade (abas 1 a 6) e alternar entre elas, o que facilita comparar simulações antes de fechar a matrícula do semestre. Também dá pra buscar por disciplina, código, professor ou sigla para encontrar rápido o que você procura.</p>
+
+  <div class="shortcuts-row" aria-label="Atalhos de teclado">
+    <span class="shortcut"><kbd>/</kbd><span>Buscar</span></span>
+    <span class="shortcut"><kbd>Ctrl</kbd>+<kbd>C</kbd><span>Copiar</span></span>
+    <span class="shortcut"><kbd>Ctrl</kbd>+<kbd>V</kbd><span>Colar</span></span>
+    <span class="shortcut"><kbd>Ctrl</kbd>+<kbd>Z</kbd><span>Desfazer</span></span>
+    <span class="shortcut"><kbd>Ctrl</kbd>+<kbd>Y</kbd><span>Refazer</span></span>
+    <span class="shortcut"><kbd>Delete</kbd><span>Limpar tudo</span></span>
+  </div>
+</section>
+
+<div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+<!-- Config -->
+<script src="config.js"></script>
+
+<!-- Logic and data -->
+<script src="app.js"></script>
+</body>
+</html>
